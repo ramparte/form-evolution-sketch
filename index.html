@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#f3efe6" />
+<title>Form / Evolution — Ceramic Sketchbook</title>
+<style>
+:root{--bg:#f2eee5;--paper:#faf8f2;--ink:#282922;--muted:#73756c;--line:#d7d0c3;--highlight:#a45335;--hsoft:#f0e5d9;--shadow:0 5px 25px #4437280b;--radius:16px}
+*{box-sizing:border-box}html{font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}body{margin:0;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #b36c50;outline-offset:2px}button:disabled{opacity:.4;cursor:default}
+header{border-bottom:1px solid var(--line);background:var(--paper)}.head{max-width:1400px;margin:auto;padding:13px 26px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:12px}.brand-icon{font-size:28px;line-height:1;font-family:Georgia,serif;color:var(--highlight)}.brand h1{font:500 24px/1.1 Georgia,"Times New Roman",serif;letter-spacing:-.7px;margin:0}.brand p{font-size:10px;font-weight:650;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin:4px 0 0}.head-actions{display:flex;gap:9px;align-items:center}
+main{max-width:1400px;margin:auto;padding:25px 26px 48px;display:grid;grid-template-columns:minmax(0,1fr) 295px;gap:23px}.workspace{min-width:0}.lead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}.lead h2{font:400 24px/1.15 Georgia,serif;margin:0}.lead p{font-size:12px;color:var(--muted);margin:5px 0 0}.pills{display:flex;gap:6px;flex-wrap:wrap}.pill{font-size:12px;border:1px solid var(--line);background:transparent;border-radius:99px;padding:8px 13px;color:#66655f}.pill[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}.pill:hover:not([aria-pressed=true]){background:#e9e3d8}
+.stage{position:relative;background:var(--paper);border:1px solid #ded8cb;border-radius:var(--radius);min-height:475px;display:grid;grid-template-columns:minmax(0,1fr) 180px;box-shadow:var(--shadow);overflow:hidden}.stage::before,.sketch-tile::before{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,transparent 99.5%,#9a8c7720 100%);background-size:26px 100%;opacity:.15;pointer-events:none}.stage-art{display:flex;justify-content:center;align-items:center;min-height:430px}.stage-art svg{max-height:515px;width:100%;height:100%;min-width:0}.stage-note{display:flex;flex-direction:column;justify-content:space-between;padding:23px 21px 19px 0}.sketch-number{font-size:10px;color:var(--highlight);font-weight:700;letter-spacing:1.4px;text-transform:uppercase}.stage-note h3{font:400 23px/1.1 Georgia,serif;letter-spacing:-.5px;margin:12px 0 8px}.stage-note p{font-size:12px;line-height:1.6;color:var(--muted)}.render-label{font:italic 12px/1.5 Georgia,serif;color:#7d7469}.stage-footer{display:flex;gap:8px;flex-direction:column}.stage-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}
+.btn{background:var(--ink);color:white;border:1px solid var(--ink);padding:11px 16px;border-radius:9px;font-size:13px;font-weight:600;white-space:nowrap}.btn:hover{background:#494a41}.btn.secondary{background:var(--paper);color:var(--ink);border-color:var(--line)}.btn.secondary:hover{background:#eee9df}.btn.terracotta{background:var(--highlight);border-color:var(--highlight)}.btn.tiny{padding:8px 11px;font-size:12px}.btn.saved{background:#e9eee5;color:#3f6047;border:1px solid #a3b7a1}
+.section-bar{margin:24px 1px 12px;display:flex;align-items:end;justify-content:space-between;gap:12px}.section-bar h3{font:400 20px Georgia,serif;margin:0}.section-bar span{font-size:12px;color:var(--muted)}.variants{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.sketch-tile{position:relative;min-width:0;height:222px;border:1px solid #ddd7cb;border-radius:12px;background:var(--paper);overflow:hidden;padding:6px;transition:background .15s,border-color .15s,transform .15s}.sketch-tile:hover{border-color:#ac8e71;background:#fffdf9;transform:translateY(-1px)}.sketch-tile svg{display:block;width:100%;height:188px}.tile-label{position:absolute;bottom:9px;left:12px;font:italic 12px Georgia,serif;color:var(--muted)}.tile-num{position:absolute;top:13px;left:13px;font-size:10px;color:#98928a}
+.sidebar{background:#faf8f2;border:1px solid #ded8cb;border-radius:var(--radius);padding:21px 20px;align-self:start}.side-header{display:flex;align-items:center;justify-content:space-between}.side-header h3{font:400 22px Georgia,serif;margin:0}.small-note{font-size:11px;color:var(--muted);line-height:1.5}.setting{padding:19px 0;border-bottom:1px solid var(--line)}.setting:last-child{border-bottom:none}.setting-label{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:10px}.setting-label strong{font-weight:630;font-size:12px}.setting-label output{font:italic 12px Georgia,serif;color:var(--highlight)}.setting p{font-size:11px;line-height:1.45;margin:8px 0 0;color:var(--muted)}.setting input[type=range]{width:100%;height:6px;accent-color:var(--highlight);cursor:pointer}.setting select{width:100%;border-radius:8px;background:white;border:1px solid var(--line);padding:9px 11px;color:var(--ink)}.toggle-line{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:600;margin:12px 0}.toggle-line input{accent-color:var(--highlight);width:17px;height:17px}.sidebar .btn{width:100%;margin-top:13px}.saved-area{margin-top:18px;padding-top:15px;border-top:1px solid var(--line)}.saved-area h4{font:400 18px Georgia,serif;margin:0 0 12px}.saved-list{display:flex;flex-direction:column;gap:7px;max-height:380px;overflow:auto}.saved-item{width:100%;display:flex;justify-content:space-between;gap:10px;align-items:center;border:1px solid var(--line);background:transparent;border-radius:8px;text-align:left;padding:9px 10px;font-size:12px}.saved-item:hover{background:#f1ece2}.saved-item small{color:var(--muted)}.saved-item span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.footer{max-width:1400px;margin:0 auto;padding:0 26px 24px;font-size:11px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);background:#303127;color:white;padding:10px 17px;border-radius:99px;box-shadow:var(--shadow);font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:5}.toast.show{opacity:1}
+@media(max-width:950px){main{grid-template-columns:minmax(0,1fr) 255px;gap:13px;padding:18px 16px}.head{padding:12px 16px}.stage{grid-template-columns:minmax(0,1fr) 140px;min-height:410px}.stage-art{min-height:405px}.stage-note{padding:20px 12px 17px 0}.variants{gap:8px}.sketch-tile{height:198px}.sketch-tile svg{height:170px}}
+@media(max-width:720px){.brand h1{font-size:21px}main{display:flex;flex-direction:column;padding:15px 12px}.head{padding:11px 14px}.head-actions .small-hide{display:none}.lead{align-items:start;flex-direction:column}.lead h2{font-size:22px}.pills{gap:5px}.pill{font-size:12px;padding:7px 10px}.stage{grid-template-columns:minmax(0,1fr);min-height:0}.stage-art{min-height:0;height:330px}.stage-art svg{height:330px}.stage-note{padding:0px 20px 16px;display:block}.stage-note h3{font-size:18px;margin:5px 0 2px}.stage-note .stage-description{display:none}.stage-note .stage-detail{display:none}.stage-footer{display:block}.stage-actions{margin-top:9px}.stage-actions .btn{flex:1;text-align:center}.variants{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.sketch-tile{height:153px;border-radius:9px;padding:2px}.sketch-tile svg{height:133px}.tile-label{bottom:5px;left:8px;font-size:10px}.tile-num{top:6px;left:7px;font-size:9px}.section-bar{margin-top:20px}.sidebar{width:100%;padding:18px}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}.footer{padding:0 14px 20px}.head-actions .btn{padding:9px 11px}.setting{padding:14px 0}}
+@media(max-width:375px){.stage-art{height:290px}.stage-art svg{height:290px}.sketch-tile{height:130px}.sketch-tile svg{height:112px}.settings-grid{display:block}}
+</style>
+</head>
+<body>
+<header><div class="head"><div class="brand"><span class="brand-icon" aria-hidden="true">◌</span><div><h1>Form / Evolution</h1><p>An evolving sketchbook for clay</p></div></div><div class="head-actions"><button class="btn secondary tiny small-hide" id="backupBtn">Backup</button><button class="btn secondary tiny small-hide" id="importBtn">Import</button><button class="btn secondary tiny" id="exportBtn">↓ SVG</button></div></div></header>
+<main>
+<section class="workspace"><div class="lead"><div><h2>Explore the form</h2><p>Choose a vessel, select a variation, follow the interesting ones.</p></div><div class="pills" id="kindPills" aria-label="Vessel type"></div></div>
+<div class="stage"><div class="stage-art" id="heroArt" aria-label="Current vessel drawing"></div><div class="stage-note"><div><div class="sketch-number" id="iteration">Study 01 / parent</div><h3 id="heroTitle">Vessel study</h3><p class="stage-description" id="heroDescription">A form at the edge of becoming something else.</p></div><div class="stage-footer"><div class="stage-detail render-label" id="renderNote">pencil · perspective study</div><div class="stage-actions"><button class="btn secondary" id="backBtn">↶ Back</button><button class="btn terracotta" id="saveBtn">☆ Save</button></div></div></div></div>
+<div class="section-bar"><div><h3>Variations</h3><span>Tap one to follow its direction. Exploration does not teach taste.</span></div><button class="btn tiny secondary" id="refreshBtn">↻ New variations</button></div><div class="variants" id="variants"></div>
+</section>
+<aside class="sidebar"><div class="side-header"><h3>Drawing board</h3><span class="small-note" id="seedLabel">no. 001</span></div><div class="settings-grid">
+<div class="setting"><div class="setting-label"><strong>Construction</strong></div><div class="pills" id="modePills"><button class="pill" data-mode="thrown" aria-pressed="true">Thrown</button><button class="pill" data-mode="built" aria-pressed="false">Hand-built</button></div></div>
+<div class="setting"><div class="setting-label"><strong>Drawing style</strong></div><select id="renderMode"><option value="perspective">Perspective sketch</option><option value="elevation">Flat elevation</option></select><p>Lightweight 2.5D curves, not a 3D renderer.</p></div>
+<div class="setting"><div class="setting-label"><strong>View angle</strong><output id="angleOut">28°</output></div><input id="angle" type="range" min="0" max="48" value="28" step="1"/><p>Raises or lowers the viewpoint over the rim.</p></div>
+<div class="setting"><div class="setting-label"><strong>Complexity</strong><output id="complexityOut">55</output></div><input id="complexity" type="range" min="0" max="100" value="55"/><p>How many changes of direction in the form.</p></div>
+<div class="setting"><div class="setting-label"><strong>Smoothness</strong><output id="smoothnessOut">40</output></div><input id="smoothness" type="range" min="0" max="100" value="40"/><p>Angular planes ↔ flowing transitions.</p></div>
+<div class="setting"><div class="setting-label"><strong>Symmetry</strong><output id="symmetryOut">90</output></div><input id="symmetry" type="range" min="0" max="100" value="90"/><p>Balance the left and right silhouettes.</p></div>
+<div class="setting"><label class="toggle-line" for="guides"><span>Construction lines</span><input type="checkbox" id="guides" checked/></label><label class="toggle-line" for="inkRough"><span>Hand-drawn second strokes</span><input type="checkbox" id="inkRough" checked/></label></div>
+</div><button class="btn" id="startOverBtn">Generate a new starting form</button>
+<div class="saved-area"><div style="display:flex;align-items:center;justify-content:space-between"><h4>Saved designs <span id="savedCount">(0)</span></h4><div style="display:flex;gap:5px"><button class="btn tiny secondary" id="savedImportBtn">Import</button><button class="btn tiny secondary" id="savedExportBtn">Export</button></div></div><div class="saved-list" id="savedList"><p class="small-note">Only saving a design contributes to your collection of taste.</p></div></div>
+</aside>
+</main><div class="footer">Form / Evolution · Browser-local storage · No accounts or external dependencies · SVG drawings are vector paths</div><div class="toast" id="toast"></div><input type="file" id="importInput" accept="application/json,.json" hidden/>
+<script>
+'use strict';
+const $ = s => document.querySelector(s);
+const kinds = ['Vase','Bowl','Chawan','Teapot','Pitcher'];
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const fmt=n=>Number(n).toFixed(1).replace(/\.0$/,'');
+function rng(seed){let a=seed>>>0;return function(){a+=0x6d2b79f5;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296}}
+const uniform=(r,a,b)=>a+(b-a)*r();const chance=(r,p)=>r()<p;
+const createDNA=(kind, seed)=>{const r=rng(seed);const squat=kind==='Teapot'||kind==='Bowl'||kind==='Chawan';return {seed,kind,mode:'thrown',height:uniform(r,squat?250:280,squat?325:380),width:uniform(r,.82,1.17),foot:uniform(r,.56,1.10),shoulder:uniform(r,.70,1.14),belly:uniform(r,.75,1.16),neck:uniform(r,.34,.69),top:uniform(r,.39,.75),lip:uniform(r,.02,.20),waist:uniform(r,.73,1.10),asym:uniform(r,-.7,.7),sway:uniform(r,-.8,.8),handle:uniform(r,.7,1.25),spout:uniform(r,.75,1.35),spoutLift:uniform(r,.0,1.0),lid:uniform(r,0,1),lidWidth:uniform(r,.82,1.16),facet:uniform(r,0,1),form:uniform(r,0,1),twist:uniform(r,-1,1)}};
+const keys=['height','width','foot','shoulder','belly','neck','top','lip','waist','asym','sway','handle','spout','spoutLift','lid','lidWidth','facet','form','twist'];
+const limits={height:[220,395],width:[.67,1.36],foot:[.35,1.18],shoulder:[.56,1.32],belly:[.58,1.38],neck:[.25,.82],top:[.28,.85],lip:[0,.26],waist:[.55,1.28],asym:[-1,1],sway:[-1,1],handle:[.54,1.5],spout:[.6,1.5],spoutLift:[0,1],lid:[0,1],lidWidth:[.68,1.25],facet:[0,1],form:[0,1],twist:[-1,1]};
+function mutate(d,seed,strength=1){let r=rng(seed),a={...d,seed};const c=settings.complexity/100;for(let k of keys){if(chance(r,.53+c*.25)){const [lo,hi]=limits[k];a[k]=clamp(d[k]+(r()+r()+r()-1.5)*(hi-lo)*(.11+.25*c)*strength,lo,hi)}}return a;}
+const STORAGE='form-evolution-2';const initial={kind:'Teapot',mode:'thrown',renderMode:'perspective',angle:28,complexity:55,smoothness:40,symmetry:90,guides:true,inkRough:true};
+let settings={...initial};let serial=1;let current=createDNA('Teapot',607248);let variants=[];let history=[];let saved=[];let generation=1;
+try{const data=JSON.parse(localStorage.getItem(STORAGE)||'null');if(data&&data.version===2){settings={...initial,...data.settings};serial=Number(data.serial)||1;current=data.current||current;saved=Array.isArray(data.saved)?data.saved:[];generation=Number(data.generation)||1;history=Array.isArray(data.history)?data.history.slice(-35):[];}}catch(e){console.warn('Storage recovery failed',e)}
+function persist(){try{localStorage.setItem(STORAGE,JSON.stringify({version:2,settings,serial,current,generation,saved,history:history.slice(-35)}))}catch(e){toast('Local storage is unavailable; export a backup.')}}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function toast(text){const e=$('#toast');e.textContent=text;e.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>e.classList.remove('show'),2400)}
+function pointsToPath(pts,smooth,close=false){if(!pts.length)return '';let p=`M ${fmt(pts[0][0])} ${fmt(pts[0][1])}`;if(!smooth){for(let i=1;i<pts.length;i++)p+=` L ${fmt(pts[i][0])} ${fmt(pts[i][1])}`;return p+(close?' Z':'')};const t=clamp(smooth,0,1);let list=pts;if(close)list=[...pts,pts[0]];for(let i=0;i<list.length-1;i++){const A=list[i-1]||list[i],B=list[i],C=list[i+1],D=list[i+2]||C;p+=` C ${fmt(B[0]+(C[0]-A[0])*t/6)} ${fmt(B[1]+(C[1]-A[1])*t/6)}, ${fmt(C[0]-(D[0]-B[0])*t/6)} ${fmt(C[1]-(D[1]-B[1])*t/6)}, ${fmt(C[0])} ${fmt(C[1])}`}return p+(close?' Z':'')}
+// A vessel is described by horizontal sections. This is intentionally 2.5D: all
+// perspective hints are SVG curves evaluated once per design, never a 3D mesh.
+function shape(d){const c=350,kind=d.kind,H=(kind==='Bowl'||kind==='Chawan')?clamp(d.height*.80,205,280):d.height;
+const top=(kind==='Bowl'||kind==='Chawan')?226:145;const bottom=top+H;const baseR=(kind==='Bowl'||kind==='Chawan')?105:124;
+let profiles;
+if(kind==='Teapot'){
+ const archetypes=[
+  [d.top*.92,d.neck*.83,d.shoulder*.88,d.shoulder*1.1,d.width*1.14,d.belly*.94,d.waist*.83,d.foot*.73],
+  [d.top*.95,d.neck*.96,d.shoulder*1.1,d.shoulder*1.24,d.width*1.20,d.belly*.97,d.waist*.72,d.foot*.60],
+  [d.top*1.04,d.neck*1.13,d.shoulder*.96,d.shoulder*1.07,d.width*.94,d.belly*1.03,d.waist*1.18,d.foot*1.09],
+  [d.top*.85,d.neck*.90,d.shoulder*1.0,d.shoulder*1.10,d.width*.99,d.belly*.91,d.waist*1.10,d.foot*1.30]
+ ];
+ const pos=d.form*3, i=Math.min(2,Math.floor(pos)),t=pos-i;
+ const radii=archetypes[i].map((val,j)=>val*(1-t)+archetypes[i+1][j]*t);
+ const factors=[1,.90,.80,1.03,1.11,1.04,.95,.75];
+ profiles=[[0,radii[0]],[.08,radii[1]*factors[1]],[.17,radii[2]*factors[2]],[.29,radii[3]*factors[3]],[.49,radii[4]*factors[4]],[.69,radii[5]*factors[5]],[.84,radii[6]*factors[6]],[1,radii[7]*factors[7]]].map(([y,r])=>[y,baseR*r]);
+ }
+else if(kind==='Vase')profiles=[[0,baseR*d.top],[.06,baseR*d.neck],[.20,baseR*.78*d.neck],[.34,baseR*.95*d.shoulder],[.51,baseR*1.04*d.belly],[.76,baseR*1.12*d.width],[.91,baseR*.82*d.waist],[1,baseR*.67*d.foot]];
+else if(kind==='Bowl')profiles=[[0,baseR*1.60*d.top],[.06,baseR*1.6*d.width],[.20,baseR*1.53*d.shoulder],[.48,baseR*1.10*d.belly],[.76,baseR*.72*d.waist],[1,baseR*.58*d.foot]];
+else if(kind==='Chawan')profiles=[[0,baseR*1.50*d.top],[.06,baseR*1.54*d.width],[.24,baseR*1.50*d.shoulder],[.48,baseR*1.26*d.belly],[.73,baseR*.88*d.waist],[.94,baseR*.64*d.foot],[1,baseR*.58*d.foot]];
+else profiles=[[0,baseR*d.top],[.08,baseR*.65*d.neck],[.19,baseR*.85*d.shoulder],[.38,baseR*1.06*d.width],[.70,baseR*1.08*d.belly],[.87,baseR*.85*d.waist],[1,baseR*.70*d.foot]];
+const sym=(100-settings.symmetry)/100;const drift=(d.asym*24+d.sway*12)*sym;const tilt=(d.twist*8)*sym;const pts=profiles.map(([y,r],i)=>({y:top+y*H,cy:c+(y-.4)*tilt,r:Math.max(18,r),v:y}));
+const left=pts.map(p=>[p.cy-p.r+drift*(p.v-.25),p.y]);const right=pts.map(p=>[p.cy+p.r+drift*(p.v+.15),p.y]);return {c,top,bottom,H,pts,left,right,drift,styleSmooth:(settings.smoothness/100)*(.96-.3*(d.mode==='built'))};}
+function arc(x,y,rx,ry,front){const a=front?0:1;return `M ${fmt(x-rx)} ${fmt(y)} A ${fmt(rx)} ${fmt(ry)} 0 0 ${a} ${fmt(x+rx)} ${fmt(y)}`;}
+function fullEllipse(x,y,rx,ry){return `<ellipse cx="${fmt(x)}" cy="${fmt(y)}" rx="${fmt(rx)}" ry="${fmt(ry)}" />`}
+function vesselSVG(d,{thumbnail=false}={}){const v=shape(d);const r=rng(d.seed+63);const sketch=settings.renderMode==='perspective',view=sketch?settings.angle:0;const depth=(.012+view/180),guides=settings.guides,rough=settings.inkRough;const top=v.pts[0],lower=v.pts.at(-1),sr=v.pts[Math.min(3,v.pts.length-1)];const roughStroke=rough&&!thumbnail;const baseStyle=`fill="none" stroke="#302e2b" stroke-linecap="round" stroke-linejoin="round"`;
+const x=c=>fmt(c), y=c=>fmt(c);const paths=[];
+
+// Construct complete body path without a brittle regular-expression join.
+const perimeter=[...v.left,...[...v.right].reverse()];const bodyPath=pointsToPath(perimeter,v.styleSmooth,true);const mouthRx=top.r;
+let res=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 640" role="img" aria-label="${esc(d.kind)} ${esc(d.mode)} ceramic form, ${sketch?'perspective':'elevation'} study"><rect width="700" height="640" fill="#faf8f2"/>`;
+// Thin central construction line and sectional guide curves, behind the vessel.
+if(guides){res+=`<path d="M 350 86 L 350 ${fmt(Math.min(580,v.bottom+24))}" fill="none" stroke="#8b8a83" opacity=".27" stroke-width="1.2" stroke-dasharray="120 9 5 9"/>`;
+res+=`<path d="M 166 ${fmt(v.top+v.H*.47)} L 530 ${fmt(v.top+v.H*.47)}" stroke="#9d9b91" opacity=".14" stroke-width="1"/>`}
+// Spout and handle are deliberately drawn first so their attachments disappear behind the body.
+if(['Teapot','Pitcher'].includes(d.kind)){
+const handleUpper=v.pts[2],handleLower=v.pts[d.kind==='Teapot'?5:5];const hx=handleUpper.cy-handleUpper.r+12,hy=handleUpper.y+2, lx=handleLower.cy-handleLower.r+10,ly=handleLower.y-5;
+const reach=(59+48*d.handle),lift=(38+23*d.handle);
+const outer=`M ${x(hx)} ${y(hy)} C ${x(hx-reach*.30)} ${y(hy-lift*.37)}, ${x(hx-reach*.86)} ${y(hy-lift*.80)}, ${x(hx-reach)} ${y(hy+11)} C ${x(hx-reach*1.2)} ${y(hy+78)}, ${x(lx-reach*.63)} ${y(ly+29)}, ${x(lx)} ${y(ly)}`;
+const inner=`M ${x(hx+5)} ${y(hy+16)} C ${x(hx-reach*.30)} ${y(hy-lift*.30+13)}, ${x(hx-reach*.70)} ${y(hy-lift*.15+10)}, ${x(hx-reach*.77)} ${y(hy+20)} C ${x(hx-reach*.82)} ${y(hy+65)}, ${x(lx-reach*.46)} ${y(ly+15)}, ${x(lx+4)} ${y(ly-12)}`;
+res+=`<path d="${outer} L ${inner.substring(1)} Z" fill="#faf8f2" stroke="none"/><path d="${outer}" ${baseStyle} stroke-width="2.9"/><path d="${inner}" ${baseStyle} stroke-width="1.9"/>`;
+if(rough)res+=`<path d="${outer}" ${baseStyle} opacity=".13" transform="translate(-2,1.4)" stroke-width="1.15"/>`;
+const attachment=v.pts[3],attX=attachment.cy+attachment.r-5,attY=attachment.y+15;const tipX=attX+(84+76*d.spout), tipY=v.top+35-48*d.spoutLift;
+const spoutTop=`M ${x(attX-25)} ${y(attY-50)} C ${x(attX+36)} ${y(attY-63)}, ${x(tipX-45)} ${y(tipY+32)}, ${x(tipX)} ${y(tipY)}`;
+const spoutBottom=`M ${x(tipX-1)} ${y(tipY+14)} C ${x(tipX-28)} ${y(tipY+34)}, ${x(attX+39)} ${y(attY+20)}, ${x(attX)} ${y(attY+63)}`;
+res+=`<path d="${spoutTop} L ${x(tipX-1)} ${y(tipY+14)} ${spoutBottom.slice(1)} Z" fill="#faf8f2" stroke="none"/><path d="${spoutTop} M ${x(tipX-1)} ${y(tipY+14)} C ${x(tipX-28)} ${y(tipY+34)}, ${x(attX+39)} ${y(attY+20)}, ${x(attX)} ${y(attY+63)}" ${baseStyle} stroke-width="2.9"/>`;
+res+=`<path d="M ${x(attX+4)} ${y(attY+22)} C ${x(attX+43)} ${y(attY-27)}, ${x(tipX-28)} ${y(tipY+22)}, ${x(tipX-6)} ${y(tipY+8)}" ${baseStyle} stroke-width="1.2" opacity=".24"/>`;
+res+=`<path d="M ${x(attX-14)} ${y(attY-35)} Q ${x(attX+8)} ${y(attY+9)} ${x(attX-8)} ${y(attY+50)}" ${baseStyle} stroke-width="1.4" opacity=".55" stroke-dasharray="6 4 4 5"/>`;
+}
+// Front body planes and silhouette.
+res+=`<path d="${bodyPath}" fill="#faf8f2" stroke="#302e2b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+// The central offset planes are primarily for faceted forms, but stay faint for round ones.
+const facetOpacity=d.mode==='built'?.25:.10;
+for(let side of [-1,1]){const px=p=>p.cy+side*p.r*.68;res+=`<path d="M ${x(px(v.pts[1]))} ${y(v.pts[1].y)} Q ${x(px(v.pts[3])+side*4)} ${y(v.pts[3].y+16)} ${x(px(v.pts.at(-1)))} ${y(v.bottom)}" ${baseStyle} opacity="${facetOpacity}" stroke-width="1.1"/>`}
+if(roughStroke){res+=`<path d="${bodyPath}" ${baseStyle} transform="translate(1.6,-1)" opacity=".11" stroke-width="1.5"/>`}
+// Wall section / shoulder contours are curves on the visible front face.
+if(guides){const positions=d.kind==='Teapot'?[2,4,6]:[2,Math.floor(v.pts.length/2),v.pts.length-2];for(let i of positions){const p=v.pts[i];const ry=Math.max(2,p.r*depth);res+=`<path d="${arc(p.cy,p.y,p.r,ry,true)}" ${baseStyle} stroke="#97938a" stroke-width="1.05" opacity="${sketch?.36:.18}"/>`;if(sketch&&i===positions[0])res+=`<path d="${arc(p.cy,p.y,p.r,ry,false)}" ${baseStyle} stroke="#aaa79e" stroke-width=".8" opacity=".16" stroke-dasharray="5 7"/>`}}
+// Foot seam gives visible body thickness in raised view.
+if(sketch&&view>8){const ry=lower.r*depth*.70;res+=`<path d="${arc(lower.cy,lower.y-2,lower.r,ry,false)}" ${baseStyle} stroke-width="1" opacity=".20" stroke-dasharray="5 6"/>`}
+res+=`<path d="M ${x(v.left.at(-1)[0]+6)} ${y(v.bottom+2)} L ${x(v.right.at(-1)[0]-5)} ${y(v.bottom+2)}" ${baseStyle} stroke-width="1.15" opacity=".45"/>`;
+// Lip with visible interior. Elevation keeps near-flat section for speed and clarity.
+const rimY=v.top-5,ry=mouthRx*depth,lid= d.kind==='Teapot'?d.lid:0;
+if(d.kind==='Teapot'&&lid>=0){const lx=top.cy,lr=mouthRx*(1.10+.13*d.lidWidth),ly=rimY-11;
+// Wide shallow lid as in the reference sketches, offset slightly above the neck.
+res+=`<path d="M ${x(lx-lr)} ${y(ly)} L ${x(lx+lr)} ${y(ly)} L ${x(lx+lr-9)} ${y(ly+11)} Q ${x(lx)} ${y(ly+16)} ${x(lx-lr+10)} ${y(ly+11)} Z" fill="#faf8f2" stroke="#302e2b" stroke-width="2.5" stroke-linejoin="round"/>`;
+if(lid>.6){res+=`<ellipse cx="${x(lx)}" cy="${y(ly-3)}" rx="16" ry="5" fill="#faf8f2" stroke="#302e2b" stroke-width="1.7"/>`}
+res+=`<path d="M ${x(lx+lr*.46)} ${y(ly+7)} l 0 18 m -3 -18 l 0 14" ${baseStyle} opacity=".55" stroke-width="1.5"/>`;
+}else{
+res+=`<path d="${arc(top.cy,rimY,mouthRx*(1+d.lip),Math.max(1.7,ry),false)}" ${baseStyle} stroke-width="2" opacity=".65"/>`;
+res+=`<path d="${arc(top.cy,rimY,mouthRx*(1+d.lip),Math.max(1.7,ry),true)}" ${baseStyle} stroke-width="2.6"/>`;
+res+=`<path d="${arc(top.cy,rimY+7,mouthRx*(1+d.lip*.85),Math.max(1.7,ry*.75),true)}" ${baseStyle} stroke-width="1.5" opacity=".65"/>`;
+}
+// Lid base and handle spout joining hatching, lightly applied.
+if(guides){for(let i=0;i<3;i++){const p=v.pts[2];const atx=p.cy+p.r-8+i*3;res+=`<path d="M ${x(atx)} ${y(p.y-9+i*8)} l 10 5" ${baseStyle} stroke-width="1.3" opacity=".48"/>`}}
+if(roughStroke){const a=v.pts[0],b=v.pts[3];res+=`<path d="M ${x(a.cy-a.r-4)} ${y(a.y+7)} Q ${x(a.cy-a.r-22)} ${y(a.y+50)} ${x(b.cy-b.r-2)} ${y(b.y+3)}" ${baseStyle} stroke-width=".8" opacity=".12"/>`}
+res+=`</svg>`;return res;
+}
+function newSeed(){return (Math.random()*0xffffffff)>>>0}
+function makeVariants(){variants=Array.from({length:9},(_,i)=>{const seed=newSeed(); if(i===7)return {...createDNA(current.kind,seed),mode:current.mode}; if(i===8)return {...createDNA(current.kind,seed),mode:current.mode,height:clamp(current.height*(.74+.55*rng(seed+55)()),220,395)};return mutate(current,seed,[.8,1.1,1.5,.9,1.7,2.3,3][i]);});}
+function saveHistory(){history.push({...current});if(history.length>35)history.shift()}
+function choose(d){saveHistory();current={...d,kind:settings.kind,mode:settings.mode};generation++;makeVariants();persist();render()}
+function resetKind(kind){settings.kind=kind;saveHistory();current={...createDNA(kind,newSeed()),mode:settings.mode};generation++;makeVariants();persist();render()}
+function setMode(mode){settings.mode=mode;current={...current,mode};variants=variants.map(v=>({...v,mode}));persist();render()}
+function ensureDNA(d){return d&&typeof d.height==='number'&&typeof d.kind==='string'&&keys.every(k=>typeof d[k]==='number')}
+function download(name,contents,mime){const blob=new Blob([contents],{type:mime});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.download=name;a.href=url;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function save(){const name=prompt('Name this design (saved designs are the only taste signals):',`${current.kind} study ${String(saved.length+1).padStart(2,'0')}`);if(name===null)return;const item={name:name.trim()||`${current.kind} study`,date:new Date().toISOString(),dna:{...current},settings:{...settings}};saved.unshift(item);persist();renderSaved();toast('Saved to this browser');}
+function exportSVG(){const n=`${current.kind.toLowerCase()}-${current.seed}-sketch.svg`;download(n,vesselSVG(current), 'image/svg+xml;charset=utf-8');toast('SVG downloaded')}
+function backup(){const payload={format:'form-evolution-backup',version:2,exported:new Date().toISOString(),settings,current,generation,saved,serial};download('form-evolution-backup.json',JSON.stringify(payload,null,2),'application/json')}
+function renderSaved(){const e=$('#savedList');$('#savedCount').textContent=`(${saved.length})`;if(!saved.length){e.innerHTML='<p class="small-note">Only saving a design contributes to your collection of taste.</p>';return}
+e.innerHTML=saved.map((s,i)=>`<button class="saved-item" data-save-index="${i}"><span>☆ ${esc(s.name)}</span><small>${esc(s.dna.kind)}</small></button>`).join('');e.querySelectorAll('[data-save-index]').forEach(b=>b.onclick=()=>{const s=saved[Number(b.dataset.saveIndex)];saveHistory();settings={...settings,kind:s.dna.kind,mode:s.dna.mode};current={...s.dna};generation++;makeVariants();persist();render();toast('Loaded saved design')})}
+function render(){const lead=$('#kindPills');lead.innerHTML=kinds.map(k=>`<button class="pill" data-kind="${k}" aria-pressed="${k===settings.kind}">${k}</button>`).join('');lead.querySelectorAll('[data-kind]').forEach(b=>b.onclick=()=>resetKind(b.dataset.kind));
+document.querySelectorAll('[data-mode]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.mode===settings.mode));b.onclick=()=>setMode(b.dataset.mode)});
+$('#heroArt').innerHTML=vesselSVG(current);$('#heroTitle').textContent=`${current.kind} study`;$('#heroDescription').textContent=settings.kind==='Teapot'?'Body, lid, loop handle and pouring spout—all evolve together.':'Shape, proportion and line evolve together.';$('#iteration').textContent=`Study ${String(generation).padStart(2,'0')} / parent`;
+$('#renderNote').textContent=`pencil · ${settings.renderMode==='perspective'?'perspective study':'elevation'} · ${settings.mode}`;$('#seedLabel').textContent=`no. ${String(current.seed>>>0).slice(0,7)}`;
+$('#variants').innerHTML=variants.map((v,i)=>`<button class="sketch-tile" data-index="${i}" aria-label="Follow variation ${i+1}"><span class="tile-num">${String(i+1).padStart(2,'0')}</span>${vesselSVG(v,{thumbnail:true})}<span class="tile-label">${['a','b','c','d','e','f','g','h','i'][i]} · ${['shifted','splayed','tightened','rounded','widened','extended','lifted','unexpected','far afield'][i]}</span></button>`).join('');$('#variants').querySelectorAll('[data-index]').forEach(b=>b.onclick=()=>choose(variants[Number(b.dataset.index)]));
+$('#backBtn').disabled=!history.length;$('#renderMode').value=settings.renderMode;
+for(let k of ['angle','complexity','smoothness','symmetry']){$('#'+k).value=settings[k];$('#'+k+'Out').textContent=String(settings[k])+(k==='angle'?'°':'')}
+$('#guides').checked=settings.guides;$('#inkRough').checked=settings.inkRough;renderSaved()}
+$('#saveBtn').onclick=save;$('#exportBtn').onclick=exportSVG;$('#backBtn').onclick=()=>{if(history.length){current=history.pop();settings.kind=current.kind;settings.mode=current.mode;generation=Math.max(1,generation-1);makeVariants();persist();render()}};
+$('#refreshBtn').onclick=()=>{makeVariants();persist();render()};$('#startOverBtn').onclick=()=>resetKind(settings.kind);
+$('#backupBtn').onclick=backup;$('#importBtn').onclick=()=>$('#importInput').click();$('#savedImportBtn').onclick=()=>$('#importInput').click();$('#savedExportBtn').onclick=backup;
+$('#importInput').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;const p=JSON.parse(await f.text());if(p.format!=='form-evolution-backup'||!Array.isArray(p.saved)||!p.saved.every(x=>ensureDNA(x.dna)))throw new Error('Not a Form / Evolution v2 backup');if(confirm(`Restore ${p.saved.length} saved designs from this backup? Current designs will be replaced.`)){saved=p.saved;settings={...initial,...p.settings};current=ensureDNA(p.current)?p.current:current;generation=p.generation||1;history=[];makeVariants();persist();render();toast('Backup restored')}}catch(err){alert('Could not import: '+err.message)}finally{e.target.value=''}};
+$('#renderMode').onchange=e=>{settings.renderMode=e.target.value;persist();render()};
+for(let k of ['angle','complexity','smoothness','symmetry']){$('#'+k).oninput=e=>{settings[k]=Number(e.target.value);persist();render()}}
+for(let k of ['guides','inkRough']){$('#'+k).onchange=e=>{settings[k]=e.target.checked;persist();render()}}
+window.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'&&history.length&&!['INPUT','SELECT'].includes(document.activeElement.tagName)){$('#backBtn').click()}});
+makeVariants();render();
+</script>
+</body></html>
